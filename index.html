@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Şevki Kağan Ay | İyi ki Doğdun 🎂</title>
+<title>Şevki Kağan Ay | Uzman Demokrat</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <style>
@@ -72,22 +72,51 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 .frameless-track img:hover { transform: scale(1.05); z-index: 10; }
 
 /* 4. BÜYÜK FİNAL & SÜRPRİZ EKRANI */
-#slide-finale { background: #000; position: relative; justify-content: flex-start; padding-top: 6vh; }
-.finale-desc { color: var(--accent2); letter-spacing: 4px; text-transform: uppercase; font-size: clamp(18px, 3vw, 28px); font-weight: 700; z-index: 20; text-align: center; margin-bottom: 2vh; }
-.finale-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 12vw, 150px); color: #fff; z-index: 20; text-align: center; }
+#slide-finale { 
+  background: #000; 
+  position: relative; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; /* Merkeze sabitledik */
+  padding: 20px; 
+  height: 100vh;
+}
+.finale-container { z-index: 20; text-align: center; }
+.finale-desc { color: var(--accent2); letter-spacing: 4px; text-transform: uppercase; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.finale-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(50px, 10vw, 120px); color: #fff; line-height: 1; }
 .finale-title span { color: var(--accent); }
+.sub-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(30px, 5vw, 60px); color: #ff8c00; margin-top: 10px; }
 
 #balloons-container { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 30; }
-.balloon-wrapper { position: absolute; display: flex; flex-direction: column; align-items: center; pointer-events: auto; cursor: crosshair; transition: opacity 0.2s, transform 0.2s; animation: floatBalloon 3s ease-in-out infinite alternate; }
-.balloon-wrapper.popped { transform: scale(0) !important; opacity: 0; pointer-events: none; }
-.balloon-emoji { font-size: clamp(90px, 12vw, 160px); user-select: none; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5)); z-index: 2; }
-/* İplerin aşağıya inmesi için ayar */
-.balloon-string { width: 3px; height: 100vh; background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent); margin-top: -15px; z-index: 1; }
-@keyframes floatBalloon { 0% { transform: translateY(0) rotate(-2deg); } 100% { transform: translateY(-30px) rotate(2deg); } }
+/* ... Balon stilleri aynı ... */
 
-/* Sürpriz Damar Fotoğrafı */
-#surprise-photo { position: absolute; bottom: -100%; left: 50%; transform: translateX(-50%); height: 65vh; max-width: 90vw; object-fit: contain; z-index: 10; transition: bottom 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0px 10px 30px rgba(255, 60, 60, 0.5)); }
+#surprise-photo { 
+  position: absolute; 
+  bottom: -100%; /* Başlangıçta gizli */
+  left: 50%; 
+  transform: translateX(-50%); 
+  height: 40vh; /* Fotoğrafın çok yer kaplamaması için boyut ayarı */
+  max-width: 90vw; 
+  object-fit: contain; 
+  z-index: 10; 
+  transition: bottom 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
 #surprise-photo.revealed { bottom: 5vh; }
+</style>
+</head>
+<body>
+
+<section class="slide" id="slide-finale">
+      <div class="finale-container">
+        <p class="finale-desc">SÜPRİZİ GÖRMEK İÇİN BALONLARI PATLAT!</p>
+        <h1 class="finale-title">İYİ Kİ <span>DOĞDUN!</span></h1>
+        <h2 class="sub-title">BOL CS Lİ YILLARA</h2>
+      </div>
+      
+      <img id="surprise-photo" src="https://github.com/uzmdrufukkarbas/damargenisletensite/blob/main/media/last.png?raw=true" alt="Sürpriz!">
+      <div id="balloons-container"></div>
+    </section>
 
 /* LIGHTBOX & HEADER */
 #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10000; align-items: center; justify-content: center; }
