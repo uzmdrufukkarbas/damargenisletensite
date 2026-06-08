@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Şevki Kağan Ay | İyi ki Doğdun 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { --bg: #000; --accent: #ff3c3c; --accent2: #ff8c00; }
+
+/* TÜM TARAYICILARDA ÇUBUKLARI GİZLEME VE YAPIYI KORUMA */
+html, body {
+  background: var(--bg); color: #fff; font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
+
+.scroll-space { position: relative; width: 100%; }
+.sticky-wrapper { position: sticky; top: 0; height: 100vh; width: 100vw; overflow: hidden; }
+.horizontal-track { display: flex; width: max-content; height: 100vh; will-change: transform; transition: transform 0.1s linear; }
+.slide { width: 100vw; height: 100vh; flex-shrink: 0; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* HERO (GİRİŞ) EKRANI */
+#slide-hero { background: radial-gradient(circle at center, #110303 0%, #000 70%); }
+.hero-eyebrow { font-family:'Barlow Condensed', sans-serif; font-size: clamp(12px, 1.5vw, 16px); letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.hero-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px, 14vw, 180px); line-height: 0.9; text-align: center; letter-spacing: 2px; }
+.hero-sub { margin-top: 24px; font-family:'Barlow Condensed', sans-serif; font-size: clamp(16px, 2vw, 22px); color: rgba(255,255,255,0.7); text-align: center; max-width: 600px; }
+.hero-sub em { color: var(--accent2); font-style:normal; font-weight:700; }
+.scroll-hint { position: absolute; bottom: 32px; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; }
+.scroll-line { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--accent), transparent); }
+
+/* VİDEO EKRANLARI */
+.vid-card { background: #000; }
+.vid-card video { width: 100%; height: 100%; object-fit: contain; }
+.vid-overlay { position: absolute; bottom: 40px; left: 40px; z-index: 10; pointer-events: none; }
+.vid-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: rgba(255,255,255,0.3); }
+.vid-label { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+
+/* FOTOĞRAF EKRANI */
+#slide-photos { background: #000; padding: 40px; }
+.photos-container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 24px; }
+.photos-label { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 12px; }
+.photos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.photo-frame { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); cursor: zoom-in; aspect-ratio: 4/5; }
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.photo-frame:hover img { transform: scale(1.03); }
+
+/* LIGHTBOX (FOTOĞRAF BÜYÜTME) */
+#lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10000; align-items: center; justify-content: center; }
+#lightbox.open { display: flex; }
+#lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+#lightbox-close { position: absolute; top: 24px; right: 24px; font-size: 32px; color: #fff; background: none; border: none; cursor: pointer; }
+
+/* STICKY HEADER (ÜST BAR) */
+#sticky-header { position: fixed; top: 0; left: 0; right: 0; z-index: 500; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; transform: translateY(-100%); transition: transform 0.3s ease; }
+#sticky-header.visible { transform: translateY(0); }
+.sticky-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; }
+.sticky-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 0.2em; color: var(--accent2); text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<header id="sticky-header">
+  <span class="sticky-name">ŞEVKİ KAĞAN AY</span>
+  <span class="sticky-tag">17 Y.O. LEGEND</span>
+</header>
+
+<div class="scroll-space" id="scroll-space">
+  <div class="sticky-wrapper">
+    <div class="horizontal-track" id="horizontal-track">
+
+      <section class="slide" id="slide-hero">
+        <div class="hero-eyebrow">⚡ Young Talent ⚡</div>
+        <h1 class="hero-name">ŞEVKİ KAĞAN AY</h1>
+        <p class="hero-sub">
+          <em>17 y.o. young talent</em> — XANTARES'i aratmayan vuruşlar.
+        </p>
+        <div class="scroll-hint">
+          <span>Aşağı Kaydır</span>
+          <div class="scroll-line"></div>
+        </div>
+      </section>
+
+      <section class="slide" id="slide-photos">
+        <div class="photos-container">
+          <div class="photos-header">
+            <span class="photos-label">◈ Galeri</span>
+          </div>
+          <div class="photos-grid" id="photos-grid"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<div id="lightbox">
+  <button id="lightbox-close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+(function(){
+  // ── GITHUB VİDEO LİNKLERİNİ BURAYA YAPIŞTIR ──
+  const VIDEO_SRCS = [
+    "https://raw.githubusercontent.com/kullaniciadi/depo/main/video1.mp4",
+    "https://raw.githubusercontent.com/kullaniciadi/depo/main/video2.mp4"
+  ];
+
+  // ── GITHUB FOTOĞRAF LİNKLERİNİ BURAYA YAPIŞTIR ──
+  const PHOTO_SRCS = [
+    "https://raw.githubusercontent.com/uzmdrufukkarbas/damargenisletensite/main/media/%E2%80%8EOnurhan%20Karba%C5%9F%20ki%C5%9Fisinden%20foto%C4%9Fraf.jpg?raw=true"
+  ];
+
+  // Linklerdeki gizli karakter hatalarını temizleme filtresi (Scroll kilitlenmesini çözer)
+  const cleanVideos = VIDEO_SRCS.map(src => encodeURI(src.trim()));
+  const cleanPhotos = PHOTO_SRCS.map(src => encodeURI(src.trim()));
+
+  const totalVids = cleanVideos.length;
+  const totalSlides = 1 + totalVids + 1; 
+  let allVidEls = [];
+
+  const scrollSpace = document.getElementById('scroll-space');
+  scrollSpace.style.height = `${totalSlides * 100}vh`;
+  const track = document.getElementById('horizontal-track');
+  const photosSlide = document.getElementById('slide-photos');
+  
+  cleanVideos.forEach((src, i) => {
+    const section = document.createElement('section');
+    section.className = 'slide vid-card';
+    
+    const vid = document.createElement('video');
+    vid.src = src; 
+    vid.playsinline = true; 
+    vid.loop = true; 
+    vid.preload = 'metadata';
+    // Tarayıcıların videoları otomatik oynatabilmesi için ses başlangıçta kapalı olmalı
+    vid.muted = true; 
+    
+    const overlay = document.createElement('div');
+    overlay.className = 'vid-overlay';
+    overlay.innerHTML = `<div class="vid-num">${String(i + 1).padStart(2, '0')}</div><div class="vid-label">Highlight Clip</div>`;
+    
+    section.appendChild(vid); section.appendChild(overlay);
+    track.insertBefore(section, photosSlide);
+    allVidEls.push(vid);
+  });
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    track.style.transform = `translateX(-${scrolled}px)`;
+    
+    const viewWidth = window.innerWidth;
+    const activeIndex = Math.round(scrolled / viewWidth);
+    
+    allVidEls.forEach((vid, i) => {
+      if (activeIndex === (i + 1)) {
+        if (vid.paused) { 
+          // Kullanıcı sayfada ilk etkileşimini yaptıysa sesi açmayı dene, yoksa sessiz oynat
+          vid.play().catch(() => {}); 
+        }
+      } else { 
+        vid.pause(); 
+      }
+    });
+
+    const sh = document.getElementById('sticky-header');
+    if (scrolled > viewWidth * 0.3) { sh.classList.add('visible'); } 
+    else { sh.classList.remove('visible'); }
+  }, { passive: true });
+
+  const grid = document.getElementById('photos-grid');
+  cleanPhotos.forEach(src => {
+    const frame = document.createElement('div'); frame.className = 'photo-frame';
+    const img = document.createElement('img'); img.src = src; img.alt = 'Kağan';
+    frame.appendChild(img);
+    frame.addEventListener('click', () => openLightbox(src));
+    grid.appendChild(frame);
+  });
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.getElementById('lightbox-close').addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if(e.target===lb) closeLb(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeLb(); });
+  function openLightbox(src) { lbImg.src = src; lb.classList.add('open'); }
+  function closeLb() { lb.classList.remove('open'); }
+})();
+</script>
+</body>
+</html>
